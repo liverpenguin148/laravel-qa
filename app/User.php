@@ -45,17 +45,17 @@ class User extends Authenticatable
         return $this->hasMany(Question::class); //Userモデル(1) 対 Questionモデル(多)の関係性
     }
 
-    public function setTitleAttribute($value){
-        $this->attributes['title'] = $value;
-        /* str_slugとは
-        * *指定された文字列から、URLフレンドリーな「スラグ」を生成する
-        ** $slug = str_slug('Laravel 5 Framework', '-');
-        ** ⇒ laravel-5-framework
-        */
+    // public function setTitleAttribute($value){
+    //     $this->attributes['title'] = $value;
+    //     /* str_slugとは
+    //     * *指定された文字列から、URLフレンドリーな「スラグ」を生成する
+    //     ** $slug = str_slug('Laravel 5 Framework', '-');
+    //     ** ⇒ laravel-5-framework
+    //     */
 
-        //$this->attributes['slug'] = str_slug($value); //非推薦(laravel/helpers packageのインストールが必要)
-        //コマンド composer require laravel/helpers
+    //     //$this->attributes['slug'] = str_slug($value); //非推薦(laravel/helpers packageのインストールが必要)
+    //     //コマンド composer require laravel/helpers
 
-        $this->attributes['slug'] = Str::slug($value); //推薦
-    }
+    //     $this->attributes['slug'] = Str::slug($value); //推薦
+    // }
 }
