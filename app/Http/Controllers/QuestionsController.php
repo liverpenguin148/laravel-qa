@@ -14,10 +14,16 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        $questions = Question::latest()->paginate(5);
 
-        // views\questions\index.blade.phpファイルを指す
+        //$questions = Question::latest()->paginate(5);
+        $questions = Question::with('user')->latest()->paginate(10);
+        // $questions = Question::latest()->paginate(10);
+
+        // views\questions\index.blade.phpファイルを表示する
         return view('questions.index',compact('questions'));
+
+        //renderメソッドは、ビューを返す(ブラウザーには表示されない)
+        // view('questions.index',compact('questions'))->render();
     }
 
     /**

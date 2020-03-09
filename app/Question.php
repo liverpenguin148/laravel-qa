@@ -22,4 +22,15 @@ class Question extends Model
         $this->attributes['title'] = $value;
         $this->attributes['slug'] = Str::slug($value); //推薦
     }
+
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans(); //1 Days ago表記
+    }
+
+    public function getUrlAttribute()
+    {
+        //Controllerのshowメソッドを呼ぶ。その際、idを引数とする。
+        return '#';
+    }
 }
