@@ -33,4 +33,15 @@ class Question extends Model
         //Controllerのshowメソッドを呼ぶ。その際、idを引数とする。
         return '#';
     }
+
+    public function getStatusAttribute()
+    {
+        if ($this->answers > 0) {
+            if ($this->best_answered_id) {
+                return "answered-accepted";
+            }
+            return "answered";
+        }
+        return "unanswered";
+    }
 }

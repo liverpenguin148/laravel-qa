@@ -11,6 +11,18 @@
                     <!-- Questionモデルから、データを全件取得し、$questionへ格納 -->
                     @foreach ($questions as $question)
                         <div class="media">
+                            <div class="d-flex flex-column counters">
+                                <div class="vote">
+                                    <!--str_plural(単語を複数形に変換)-->
+                                    <strong>{{ $question->votes }}</strong> {{ str_plural('vote', $question->votes) }}
+                                </div>
+                                <div class="status {{ $question->status}}">
+                                    <strong>{{ $question->answers }}</strong> {{ str_plural('answer', $question->answers) }}
+                                </div>
+                                <div class="view">
+                                    {{ $question->views. " " .str_plural('view', $question->views) }}
+                                </div>
+                            </div>
                             <div class="media-body">
                             <!-- question.titleを表示 -->
                             <h3 class="mt-0"><a href="{{ $question->url }}">{{ $question->title }}</a></h3>
