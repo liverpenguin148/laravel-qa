@@ -7,7 +7,11 @@ use Illuminate\Support\Str;
 
 class Question extends Model
 {
-    //
+    //ユーザー入力値を反映したくない属性を保護する
+    //insertやcreateメソッドでテーブルのカラムに値を挿入する際（複数代入）、
+    //予期せぬ代入を防ぐために、fillableがguardedを設定する
+    // fillable ⇒ 複数代入時に代入を許可する属性を設定
+    // guarded ⇒ 複数代入時に代入を許可しない属性を配列で設定
     protected $fillable = ['title','body'];
 
     // 1対多の逆向きのリレーションを定義する

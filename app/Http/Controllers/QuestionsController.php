@@ -31,9 +31,13 @@ class QuestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     // route(questions.create)
     public function create()
     {
-        //
+        $question = new Question();
+
+        return view('questions.create',compact('question'));
     }
 
     /**
